@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity(name="expenses")
 public class Expense {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long expense_id;
     private String timestamp;
     private long category_id;

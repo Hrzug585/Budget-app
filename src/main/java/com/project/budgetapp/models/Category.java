@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity(name="categories")
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long category_id;
     private String name;
     private long account_id;
