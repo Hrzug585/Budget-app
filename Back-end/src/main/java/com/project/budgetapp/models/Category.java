@@ -9,30 +9,30 @@ import javax.persistence.Id;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long category_id;
-    private String name;
-    private long account_id;
+    private Long category_id;
+    private String category_name;
+    private Long account_id;
 
 
     public Category() {}
 
-    public long getCategory_id() {
+    public Long getCategory_id() {
         return category_id;
     }
 
-    public void setCategory_id(long category_id) {
+    public void setCategory_id(Long category_id) {
         this.category_id = category_id;
     }
 
-    public String getName() {
-        return name;
+    public String getCategory_name() {
+        return category_name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCategory_name(String category_name) {
+        this.category_name = category_name;
     }
 
-    public long getAccount_id() {
+    public Long getAccount_id() {
         return account_id;
     }
 
