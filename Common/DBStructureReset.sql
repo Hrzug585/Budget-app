@@ -1,6 +1,6 @@
 -- SEQUENCE SETUP
 -- account sequence
-DROP SEQUENCE IF EXISTS public.account_seq;
+DROP SEQUENCE IF EXISTS public.account_seq CASCADE;
 CREATE SEQUENCE public.account_seq
     INCREMENT 1
     START 1
@@ -12,7 +12,7 @@ ALTER SEQUENCE public.account_seq
     OWNER TO postgres;
 
 -- category sequence
-DROP SEQUENCE IF EXISTS public.category_seq;
+DROP SEQUENCE IF EXISTS public.category_seq CASCADE;
 CREATE SEQUENCE public.category_seq
     INCREMENT 1
     START 1
@@ -24,7 +24,7 @@ ALTER SEQUENCE public.category_seq
     OWNER TO postgres;
 
 -- expense sequence
-DROP SEQUENCE IF EXISTS public.expense_seq;
+DROP SEQUENCE IF EXISTS public.expense_seq CASCADE;
 CREATE SEQUENCE public.expense_seq
     INCREMENT 1
     START 1
@@ -39,7 +39,7 @@ ALTER SEQUENCE public.expense_seq
 -- /SEQUENCE SETUP END
 -- TABLES SETUP
 
-DROP TABLE IF EXISTS public.accounts;
+DROP TABLE IF EXISTS public.accounts CASCADE;
 CREATE TABLE public.accounts
 (
     account_id integer NOT NULL DEFAULT nextval('account_seq'::regclass),
@@ -56,7 +56,7 @@ ALTER TABLE public.accounts
 
 -- Table: public.categories
 
-DROP IF EXISTS TABLE public.categories;
+DROP TABLE IF EXISTS public.categories CASCADE;
 CREATE TABLE public.categories
 (
     category_id integer NOT NULL DEFAULT nextval('category_seq'::regclass),
@@ -90,7 +90,7 @@ CREATE TABLE public.expenses
     CONSTRAINT fkey_category_id FOREIGN KEY (category_id)
         REFERENCES public.categories (category_id) MATCH SIMPLE
         ON UPDATE NO ACTION
-        ON DELETE NO ACTION
+        ON DELETE NO ACTION,
 	CONSTRAINT fkey_account_id FOREIGN KEY (account_id)
         REFERENCES public.accounts (account_id) MATCH SIMPLE
         ON UPDATE NO ACTION
@@ -104,12 +104,12 @@ ALTER TABLE public.expenses
 
 -- Table: public.default_categories
 
-DROP IF EXISTS TABLE public.default_categories;
+DROP TABLE IF EXISTS public.default_categories;
 CREATE TABLE public.default_categories
 (
     category_id integer NOT NULL DEFAULT nextval('category_seq'::regclass),
     category_name character varying NOT NULL,
-    CONSTRAINT categories_pkey PRIMARY KEY (category_id),
+    CONSTRAINT default_categories_pkey PRIMARY KEY (category_id)
     )
 
 TABLESPACE pg_default;
