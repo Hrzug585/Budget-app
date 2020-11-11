@@ -101,3 +101,19 @@ TABLESPACE pg_default;
 
 ALTER TABLE public.expenses
     OWNER to postgres;
+
+-- Table: public.default_categories
+
+DROP IF EXISTS TABLE public.default_categories;
+CREATE TABLE public.default_categories
+(
+    category_id integer NOT NULL DEFAULT nextval('category_seq'::regclass),
+    category_name character varying NOT NULL,
+    CONSTRAINT categories_pkey PRIMARY KEY (category_id),
+    )
+
+TABLESPACE pg_default;
+
+ALTER TABLE public.default_categories
+    OWNER to postgres;
+

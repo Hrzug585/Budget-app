@@ -1,6 +1,5 @@
 package com.project.budgetapp.controllers;
 
-
 import com.project.budgetapp.domain.ICategoryService;
 import com.project.budgetapp.models.Category;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,4 +36,10 @@ public class CategoryController {
         return categoryService.createCategory(category);
     }
 
+    @PostMapping
+    @RequestMapping("/change/{id}/{newName}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public Category changeName(@PathVariable(value="id") Long id, @PathVariable(value="newName") String newName) {
+        return categoryService.changeName(newName, id);
+    }
 }

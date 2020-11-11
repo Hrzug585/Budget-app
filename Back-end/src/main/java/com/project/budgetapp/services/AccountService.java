@@ -3,6 +3,7 @@ package com.project.budgetapp.services;
 import com.project.budgetapp.domain.IAccountService;
 import com.project.budgetapp.models.Account;
 import com.project.budgetapp.repositories.IAccountRepository;
+import com.project.budgetapp.repositories.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +13,12 @@ import java.util.List;
 @Service
 public class AccountService implements IAccountService {
     private final IAccountRepository accountRepository;
+    private final ICategoryRepository categoryRepository;
 
     @Autowired
-    public AccountService(IAccountRepository accountRepository) {
+    public AccountService(IAccountRepository accountRepository, ICategoryRepository categoryRepository) {
         this.accountRepository = accountRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     @Override
