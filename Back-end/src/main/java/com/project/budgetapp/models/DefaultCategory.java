@@ -5,20 +5,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name="categories")
-public class Category {
+@Entity(name = "default_categories")
+public class DefaultCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long category_id;
     private String category_name;
-    private Long account_id;
 
-    public Category(String category_name, Long account_id) {
-        this.category_name = category_name;
-        this.account_id = account_id;
+    public DefaultCategory() {
     }
-
-    public Category() {}
 
     public Long getCategory_id() {
         return category_id;
@@ -34,13 +29,5 @@ public class Category {
 
     public void setCategory_name(String category_name) {
         this.category_name = category_name;
-    }
-
-    public Long getAccount_id() {
-        return account_id;
-    }
-
-    public void setAccount_id(long account_id) {
-        this.account_id = account_id;
     }
 }

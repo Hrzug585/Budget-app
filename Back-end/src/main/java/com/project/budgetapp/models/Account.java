@@ -15,10 +15,10 @@ public class Account {
     private String account_name;
     private String account_deleted;
 
-    @OneToMany(mappedBy = "account_id")
+    @OneToMany(mappedBy = "account_id", cascade = CascadeType.REMOVE)
     private List<Expense> expenseList;
 
-    @OneToMany(mappedBy = "account_id")
+    @OneToMany(mappedBy = "account_id", cascade = CascadeType.REMOVE)
     private List<Category> categoryList;
 
     public Account() {}
