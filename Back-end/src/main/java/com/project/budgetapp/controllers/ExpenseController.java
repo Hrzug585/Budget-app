@@ -32,5 +32,4 @@ public class ExpenseController {
     public Expense createExpense(@RequestBody final Expense expense) {
         return expenseService.createExpense(expense);
     }
-
 }
