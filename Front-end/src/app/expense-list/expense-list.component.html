@@ -1,0 +1,24 @@
+<div>
+    <!-- <div style="width: 90%; float:right"> -->
+    <h1>Expenses:</h1>
+
+        <div id="table">
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let expense of expenses" (click)="onClick()">
+                    <td>{{ expense.name }}</td>
+                    <td>{{ expense.amount }}</td>
+                    <!-- <td><button>Click me!</button></td> -->
+                </tr>
+            </tbody>
+        </table>
+        </div>
+        <div id="details" >XX</div>
+</div>

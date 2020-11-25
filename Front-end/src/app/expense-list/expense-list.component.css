@@ -1,0 +1,30 @@
+div {
+    width: 90%;
+    float:right
+}
+/* div div {
+    width: 100%;
+    float:right
+} */
+div#table {
+    float: left;
+    width: 75%;
+}
+
+table {
+    width: 100%;
+}
+
+#details {
+    float: right; 
+    display:table-cell;
+    background-color: #eeeeee; 
+    width:25%;
+    height: 150px;
+    border-radius: 25px;
+    min-width: 200px;
+}
+
+tbody tr:hover {
+    background-color: #eeeeee;
+}

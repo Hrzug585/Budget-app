@@ -1,0 +1,12 @@
+.dark html, body, app-root {
+    height:100%;
+    width: 100%;
+    display: inline-block;
+    /* background-color: rgba(42, 40, 40, 0.657); */
+}
+
+.lite html, body, app-root {
+    height:100%;
+    width: 100%;
+    display: inline-block;
+}
