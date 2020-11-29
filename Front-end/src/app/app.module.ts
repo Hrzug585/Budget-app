@@ -1,3 +1,4 @@
+import { MainComponent } from './root/main.component';
 import { ExpenseService } from './services/expenses.service';
 import { DarkModeService } from './services/darkmode.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,7 +14,8 @@ import { ExpenseListComponent } from './expense-list/expense-list.component';
     AppComponent,
     HeaderComponent,
     Toggle,
-    ExpenseListComponent
+    ExpenseListComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule

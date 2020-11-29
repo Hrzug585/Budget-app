@@ -28,3 +28,7 @@ table {
 tbody tr:hover {
     background-color: #eeeeee;
 }
+
+.dark th {
+    color: white;
+}

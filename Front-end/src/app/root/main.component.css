@@ -1,0 +1,17 @@
+div {
+    height:100%;
+    width: 100%;
+    display: inline-block;
+}
+
+.dark {
+    
+    
+    
+    background-color:#333;
+}
+
+.lite {
+    
+    display: inline-block;
+}
