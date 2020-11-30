@@ -1,24 +1,25 @@
-<div>
-    <!-- <div style="width: 90%; float:right"> -->
+<!-- <div class="container"> -->
+    <!-- [class.lite]="theme === 'lite'"
+    [class.dark]="theme === 'dark'"> -->
+<div class="container {{theme}}">
     <h1>Expenses:</h1>
-
-        <div id="table">
+    <div id="table">
         <table>
             <thead>
             <tr>
                 <th>Name</th>
                 <th>Amount</th>
-                <th>Details</th>
+                <!-- <th>Details</th> -->
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let expense of expenses" (click)="onClick()">
+                <tr *ngFor="let expense of expenses" (click)="onClick()">
                     <td>{{ expense.name }}</td>
                     <td>{{ expense.amount }}</td>
                     <!-- <td><button>Click me!</button></td> -->
                 </tr>
             </tbody>
         </table>
-        </div>
-        <div id="details" >XX</div>
+    </div>
+    <div id="details" >Details</div>
 </div>

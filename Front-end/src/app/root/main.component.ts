@@ -8,11 +8,11 @@ import { Component } from '@angular/core';
 })
 
 export class MainComponent {
-    darkMode:boolean = true;
+    theme:string = 'lite';
 
     constructor(private darkModeService: DarkModeService) {
       this.darkModeService.switchDarkMode.subscribe(
-        (newStatus: boolean) => {this.darkMode = newStatus}
+        (newStatus: string) => {this.theme = newStatus}
       );
      }
 

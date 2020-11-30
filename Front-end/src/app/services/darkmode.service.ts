@@ -3,13 +3,13 @@ import { EventEmitter, Injectable } from '@angular/core';
 
 @Injectable()
 export class DarkModeService {
-    darkMode: boolean = true;
-    switchDarkMode = new EventEmitter<boolean>();
+    theme: string = 'lite';
+    switchDarkMode = new EventEmitter<string>();
 
 
-    onUpdate(newMode: boolean) {
-        this.darkMode = newMode;
-        this.switchDarkMode.emit(newMode);
-        console.log("new update " + this.darkMode);
+    onUpdate(newMode: string) {
+        this.theme = newMode == 'lite' ? 'dark'  : 'lite';
+        this.switchDarkMode.emit(this.theme);
+        console.log("new update " + this.theme);
     }
 }

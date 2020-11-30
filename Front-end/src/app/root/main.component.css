@@ -1,17 +1,20 @@
 div {
     height:100%;
     width: 100%;
-    display: inline-block;
+    /* display: inline-block; */
 }
 
-.dark {
-    
-    
-    
-    background-color:#333;
+.dark {   
+    background-color:#2c2c32;
 }
 
 .lite {
-    
-    display: inline-block;
+    background-color: transparent;
+    /* display: inline-block; */
+}
+
+app-expense-list {
+    /* display: block; */
+    height:100%;
+    width: 100%; 
 }
