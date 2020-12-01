@@ -1,7 +1,6 @@
 import { DarkModeService } from './../services/darkmode.service';
 import { ExpenseService } from './../services/expenses.service';
 import { Component } from '@angular/core';
-import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
 
 @Component({
   selector: 'app-expense-list',
@@ -10,6 +9,7 @@ import { listLazyRoutes } from '@angular/compiler/src/aot/lazy_routes';
   providers: []
 
 })
+
 export class ExpenseListComponent {
   expense?: {amount: number, name: string};
   expenses: {amount: number, name: string}[] = []
@@ -28,7 +28,16 @@ export class ExpenseListComponent {
     this.expenses = this.expenseService.getExpenses();
   }
   
-  onClick(){
-    console.log("click");
+  onClick(index: number){
+    this.expense = this.expenses[index];
+  }
+
+  isEmptyObject() {
+    let isEmpty:boolean = true;
+    if(!this.expense) {
+      isEmpty = false;
+    }
+
+    return isEmpty;
   }
 }

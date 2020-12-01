@@ -30,12 +30,13 @@ table {
 
 #details {
     float: right; 
-    display:table-cell;
+    /* display:table-cell; */
     width:25%;
     height: 150px;
     border-radius: 25px;
     min-width: 200px;
     padding-left: 15px;
+    padding-top: 10px;
 }
 
 .dark tbody tr:hover td {
@@ -57,4 +58,9 @@ table {
 
 .lite #details {
     background-color: #c1d4da;
+}
+
+.empty {
+    padding: 25px;
+    margin: auto;
 }
