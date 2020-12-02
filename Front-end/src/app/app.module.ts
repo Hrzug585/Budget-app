@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header/header.component';
 import { Toggle } from './toggle/toggle.component';
 import { ExpenseListComponent } from './expense-list/expense-list.component';
+import { AddExpenseComponent } from './add-expense/add-expense.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ExpenseListComponent } from './expense-list/expense-list.component';
     HeaderComponent,
     Toggle,
     ExpenseListComponent,
-    MainComponent
+    MainComponent,
+    AddExpenseComponent
   ],
   imports: [
     BrowserModule

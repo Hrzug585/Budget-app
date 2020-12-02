@@ -26,8 +26,8 @@
     </div>
     <div id="details">
         <div *ngIf="isEmptyObject(); else elseBlock">
-            <p>Name: {{ expense.name }}</p>
-            <p>Amount: {{ expense.amount }}</p>
+            <p>Name: {{ expense?.name }}</p>
+            <p>Amount: {{ expense?.amount }}</p>
         </div>
         <ng-template #elseBlock>
             <label class="empty">Choose expense to highlight!</label>
