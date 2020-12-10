@@ -1,3 +1,7 @@
+--usage: psql -U postgres -h localhost -a -f DB-new.sql
+
+\connect budget_app
+
 -- SEQUENCE SETUP
 -- account sequence
 DROP SEQUENCE IF EXISTS public.account_seq CASCADE;
@@ -9,7 +13,7 @@ CREATE SEQUENCE public.account_seq
     CACHE 1;
 
 ALTER SEQUENCE public.account_seq
-    OWNER TO postgres;
+    OWNER TO "dbUser";
 
 -- category sequence
 DROP SEQUENCE IF EXISTS public.category_seq CASCADE;
@@ -21,7 +25,7 @@ CREATE SEQUENCE public.category_seq
     CACHE 1;
 
 ALTER SEQUENCE public.category_seq
-    OWNER TO postgres;
+    OWNER TO "dbUser";
 
 -- expense sequence
 DROP SEQUENCE IF EXISTS public.expense_seq CASCADE;
@@ -33,7 +37,7 @@ CREATE SEQUENCE public.expense_seq
     CACHE 1;
 
 ALTER SEQUENCE public.expense_seq
-    OWNER TO postgres;
+    OWNER TO "dbUser";
 
 
 -- /SEQUENCE SETUP END
@@ -51,7 +55,7 @@ CREATE TABLE public.accounts
 
 TABLESPACE pg_default;
 ALTER TABLE public.accounts
-    OWNER to postgres;
+    OWNER to "dbUser";
 
 
 -- Table: public.categories
@@ -73,7 +77,7 @@ CREATE TABLE public.categories
 TABLESPACE pg_default;
 
 ALTER TABLE public.categories
-    OWNER to postgres;
+    OWNER to "dbUser";
 
 -- Table: public.expenses
 
@@ -100,7 +104,7 @@ CREATE TABLE public.expenses
 TABLESPACE pg_default;
 
 ALTER TABLE public.expenses
-    OWNER to postgres;
+    OWNER to "dbUser";
 
 -- Table: public.default_categories
 
@@ -115,5 +119,5 @@ CREATE TABLE public.default_categories
 TABLESPACE pg_default;
 
 ALTER TABLE public.default_categories
-    OWNER to postgres;
+    OWNER to "dbUser";
 
