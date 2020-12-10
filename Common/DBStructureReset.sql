@@ -38,6 +38,18 @@ CREATE SEQUENCE public.expense_seq
 
 ALTER SEQUENCE public.expense_seq
     OWNER TO "dbUser";
+	
+-- user sequence
+DROP SEQUENCE IF EXISTS public.user_seq CASCADE;
+CREATE SEQUENCE public.user_seq
+    INCREMENT 1
+    START 1
+    MINVALUE 1
+    MAXVALUE 2147483647
+    CACHE 1;
+
+ALTER SEQUENCE public.user_seq
+    OWNER TO "dbUser";
 
 
 -- /SEQUENCE SETUP END
@@ -119,5 +131,20 @@ CREATE TABLE public.default_categories
 TABLESPACE pg_default;
 
 ALTER TABLE public.default_categories
+    OWNER to "dbUser";
+	
+	
+-- Table: public.users
+
+DROP TABLE IF EXISTS public.users CASCADE;
+CREATE TABLE public.users
+(
+    user_id integer NOT NULL DEFAULT nextval('user_seq'::regclass),
+    user_name character varying NOT NULL,
+	user_password character varying NOT NULL
+)
+
+TABLESPACE pg_default;
+ALTER TABLE public.users
     OWNER to "dbUser";
 
