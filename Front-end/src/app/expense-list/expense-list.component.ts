@@ -7,25 +7,27 @@ import { Component } from '@angular/core';
   templateUrl: 'expense-list.component.html',
   styleUrls: ['./expense-list.component.css'],
   providers: []
-
 })
 
 export class ExpenseListComponent {
   expense?: {amount: number, name: string};
   expenses: {amount: number, name: string}[] = []
-  theme:string = 'lite';
-  expenseService: ExpenseService;
 
-  constructor(expenseService: ExpenseService, private darkModeService: DarkModeService) {
-    this.expenseService = expenseService;
+  theme:string = 'lite';
+
+  constructor(private expenseService: ExpenseService, private darkModeService: DarkModeService) {
+    this.expenseService.expenseUpdated.subscribe((expenses:{amount: number, name: string}[]  ) => {
+      this.expenses = expenses
+    });
     this.darkModeService.switchDarkMode.subscribe(
       (newStatus: string) => {this.theme = newStatus}
     );
+
    }
 
 
   ngOnInit() {
-    this.expenses = this.expenseService.getExpenses();
+      this.expenseService.getExpenses();
   }
   
   onClick(index: number){

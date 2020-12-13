@@ -1,5 +1,6 @@
 import { DarkModeService } from './../../services/darkmode.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
+import { ExpenseService } from 'src/app/services/expenses.service';
 
 
 @Component({
@@ -10,8 +11,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   theme:string = 'lite';
+  expenseUpdated = new EventEmitter();
 
-  constructor(private darkModeService: DarkModeService) {
+  constructor(private darkModeService: DarkModeService, private expenseService: ExpenseService) {
     this.darkModeService.switchDarkMode.subscribe(
       (newStatus: string) => {this.theme = newStatus}
     );
@@ -24,6 +26,10 @@ export class HeaderComponent implements OnInit {
     this.darkModeService.onUpdate(this.theme);
     // this.darkMode = !this.darkMode;
     // console.log(this.darkMode);
+  }
+
+  onClick() {
+    this.expenseService.getExpenses();
   }
 
 }

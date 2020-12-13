@@ -98,6 +98,7 @@ DROP TABLE IF EXISTS public.expenses;
 CREATE TABLE public.expenses
 (
     expense_id integer NOT NULL DEFAULT nextval('expense_seq'::regclass),
+	name character varying NOT NULL,
     "timestamp" character varying NOT NULL,
     category_id integer NOT NULL,
     account_id integer NOT NULL,

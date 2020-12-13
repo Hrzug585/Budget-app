@@ -64,3 +64,31 @@ table {
     padding: 25px;
     margin: auto;
 }
+
+@media (max-width: 850px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #details {
+        /* float: ;  */
+        /* display:table-cell; */
+        margin-top: 20px;
+        width:100%;
+        height: 150px;
+        border-radius: 25px;
+        min-width: 200px;
+        padding-left: 15px;
+        padding-top: 10px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    div#table {
+        width: 100%;
+    }
+}
+  

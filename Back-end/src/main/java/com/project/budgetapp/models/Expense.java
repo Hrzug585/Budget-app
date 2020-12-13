@@ -10,12 +10,21 @@ public class Expense {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long expense_id;
+    private String name;
     private String timestamp;
     private long category_id;
     private long account_id;
     private double amount;
 
     public Expense() {
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public long getExpense_id() {

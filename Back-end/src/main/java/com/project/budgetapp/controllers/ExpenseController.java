@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/expense")
 public class ExpenseController {
@@ -19,6 +21,11 @@ public class ExpenseController {
     @GetMapping("{id}")
     public Expense get(@PathVariable Long id) {
         return expenseService.getExpense(id);
+    }
+
+    @GetMapping("list/{id}")
+    public List<Expense> list(@PathVariable Long id) {
+        return expenseService.getList(id);
     }
 
     @PostMapping("delete/{id}")
