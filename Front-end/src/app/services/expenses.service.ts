@@ -1,36 +1,40 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Expense } from '../models/expense';
-import { EventEmitter } from '@angular/core';
+import { Account } from '../models/account';
+import { Category } from '../models/category';
+import { NewExpense, Expense } from '../models/expense';
 
 @Injectable()
 export class ExpenseService {
-    expenseUpdated = new EventEmitter<{amount: number, name: string}[]>();
 
-    expenses = [
-        {
-            amount: 25,
-            name: 'Test expense1'
-        },
-        {
-            amount: 55,
-            name: 'Test expense 2'
-        }
-    ];
 
     constructor(private http: HttpClient) { }
 
-    getExpenses(): void{
-     this.http.get<Expense[]>("http://localhost:9889/api/expense/list/2")
-        .subscribe(req => {
-            let expenses = req.map(expense => ({amount: expense.amount, name: expense.name}))
-            this.expenseUpdated.emit(expenses);
-          });
+    getExpenses(): Observable<Expense[]>{
+     return this.http.get<Expense[]>("http://localhost:9889/api/expense/list/1");
     }
 
-    addExpense(amount: number, name: string) {
-        this.expenses.push({amount: amount, name: name});
+    getCategories(): Observable<Account> {
+        return this.http.get<Account>("http://localhost:9889/api/account/1");
+    }
+
+    addExpense(expense: NewExpense): Observable<Expense>{
+
+        const headerDict = {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Access-Control-Allow-Headers': 'Content-Type',
+        };
+        const requestOptions = {                                                                                                                                                                                 
+            headers: new HttpHeaders(headerDict), 
+        };
+
+        //TODO
+        //Add category id and account id
+        console.log(expense);
+        return this.http.post<Expense>("http://localhost:9889/api/expense/create", expense, requestOptions);
+        
     }
 
 }

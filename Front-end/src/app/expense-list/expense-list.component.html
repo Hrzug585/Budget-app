@@ -15,19 +15,19 @@
             </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let expense of expenses; let i=index" (click)="onClick(i)">
+                <tr *ngFor="let expense of expenses; let i=index" (click)="onClick(expense)">
                     <th>{{ i+1 }}.</th>
                     <td>{{ expense.name }}</td>
                     <td>{{ expense.amount }}</td>
-                    <td></td>
+                    <td>{{ expense.timestamp }}</td>
                 </tr>
             </tbody>
         </table>
     </div>
     <div id="details">
         <div *ngIf="isEmptyObject(); else elseBlock">
-            <p>Name: {{ expense?.name }}</p>
-            <p>Amount: {{ expense?.amount }}</p>
+            <p>Name: {{ currentExpense?.name }}</p>
+            <p>Amount: {{ currentExpense?.amount }}</p>
         </div>
         <ng-template #elseBlock>
             <label class="empty">Choose expense to highlight!</label>

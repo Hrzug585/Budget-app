@@ -1,0 +1,53 @@
+h1 {
+    font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", "Helvetica", "Arial", "sans-serif";
+    text-align: center;
+}
+
+input[type=text],input[type=number], select, textarea {
+    width: 60%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+
+label {
+    padding: 12px 12px 12px 0;
+    display: inline-block;
+  }
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+input[type=submit] {
+    background-color: #4b9ee3;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+  }
+
+.container {
+    margin-top: 25px;
+    width: 80%;
+    border-radius: 25px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+  }
+  
+  .col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }

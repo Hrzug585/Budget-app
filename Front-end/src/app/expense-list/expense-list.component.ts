@@ -1,6 +1,7 @@
 import { DarkModeService } from './../services/darkmode.service';
 import { ExpenseService } from './../services/expenses.service';
 import { Component } from '@angular/core';
+import { Expense } from '../models/expense';
 
 @Component({
   selector: 'app-expense-list',
@@ -10,33 +11,29 @@ import { Component } from '@angular/core';
 })
 
 export class ExpenseListComponent {
-  expense?: {amount: number, name: string};
-  expenses: {amount: number, name: string}[] = []
+  currentExpense?: Expense;
+  expenses: Expense[] = []
 
   theme:string = 'lite';
 
   constructor(private expenseService: ExpenseService, private darkModeService: DarkModeService) {
-    this.expenseService.expenseUpdated.subscribe((expenses:{amount: number, name: string}[]  ) => {
-      this.expenses = expenses
-    });
     this.darkModeService.switchDarkMode.subscribe(
       (newStatus: string) => {this.theme = newStatus}
     );
-
    }
 
-
   ngOnInit() {
-      this.expenseService.getExpenses();
+      this.expenseService.getExpenses().subscribe(data => {this.expenses = data});
   }
   
-  onClick(index: number){
-    this.expense = this.expenses[index];
+  onClick(expense: Expense){
+    this.currentExpense = expense;
+    // console.log(this.expenses);
   }
 
   isEmptyObject() {
     let isEmpty:boolean = true;
-    if(!this.expense) {
+    if(!this.currentExpense) {
       isEmpty = false;
     }
 

@@ -10,6 +10,8 @@ import { Toggle } from './toggle/toggle.component';
 import { ExpenseListComponent } from './expense-list/expense-list.component';
 import { AddExpenseComponent } from './add-expense/add-expense.component';
 import { MainComponent } from './root/main.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { MainComponent } from './root/main.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [DarkModeService, ExpenseService],
   bootstrap: [AppComponent]

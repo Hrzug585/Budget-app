@@ -1,8 +1,8 @@
 <header [className]="[theme]" class="topnav">
     <ul>
         <li><a href="#add">Add budget item</a></li>
-        <li><a href="#list" (click)="onClick()">List of expenses</a></li>
-        <li><a href="#placeholder">Placeholder</a></li>
+        <li><a routerLink="/addexpense">Add item</a></li>
+        <li><a routerLink="/expenses">Expenses List</a></li>
         <li style="float: right"><a class="switch" (click)="onModeSwitch()">Dark/Light Mode</a></li>
     </ul>
 </header>
