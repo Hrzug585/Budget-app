@@ -19,6 +19,11 @@
     color: #9ca9ab;
 }
 
+img {
+    width: 90%;
+    /* height: 100%; */
+}
+
 div#table {
     float: left;
     width: 70%;
@@ -32,7 +37,7 @@ table {
     float: right; 
     /* display:table-cell; */
     width:25%;
-    height: 150px;
+    height: 200px;
     border-radius: 25px;
     min-width: 200px;
     padding-left: 15px;

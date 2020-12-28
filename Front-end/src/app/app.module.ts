@@ -12,6 +12,8 @@ import { AddExpenseComponent } from './add-expense/add-expense.component';
 import { MainComponent } from './root/main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ImageUploadComponent } from './expense-list/image-upload/image-upload.component';
+import { ImageService } from './services/image.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     Toggle,
     ExpenseListComponent,
     MainComponent,
-    AddExpenseComponent
+    AddExpenseComponent,
+    ImageUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     ReactiveFormsModule
   ],
-  providers: [DarkModeService, ExpenseService],
+  providers: [DarkModeService, ExpenseService, ImageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

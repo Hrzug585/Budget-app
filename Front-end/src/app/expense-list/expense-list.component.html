@@ -29,6 +29,13 @@
             <p>Name: {{ currentExpense?.name }}</p>
             <p>Amount: {{ currentExpense?.amount }}</p>
         </div>
+        <div>
+            <app-image-upload></app-image-upload>
+        </div>
+        <div *ngIf="hasImage()">
+            <img [src]="currentImage">
+            xxx
+        </div>
         <ng-template #elseBlock>
             <label class="empty">Choose expense to highlight!</label>
         </ng-template>

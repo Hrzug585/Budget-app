@@ -2,10 +2,14 @@ package com.project.budgetapp.controllers;
 
 import com.project.budgetapp.domain.IImageService;
 import com.project.budgetapp.models.Image;
+import com.sun.istack.NotNull;
+import io.swagger.v3.core.util.Json;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotBlank;
 import java.io.IOException;
 
 @RestController
@@ -19,11 +23,8 @@ public class ImageController {
 
     @PostMapping("create")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Image createImage(@RequestParam("image") MultipartFile file) throws IOException {
-
-        byte[] bytes = file.getBytes();
-        Image newImage = new Image(27, bytes);
-        return imageService.createImage(newImage);
+    public Image createImage(@RequestPart("image") @Valid @NotNull @NotBlank MultipartFile file) throws IOException {
+        return imageService.createImage(file);
     }
 
     @GetMapping("get/{id}")
