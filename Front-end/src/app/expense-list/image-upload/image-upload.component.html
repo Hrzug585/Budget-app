@@ -1,5 +1,5 @@
 <label>
     <span>Select Image</span>
-    <input type="file" accept="image/*" (change)="onFileSelected($event)">
+    <input type="file" accept=".png, .jpg, .jpeg" (change)="onFileSelected($event)">
     <button (click)="onSubmit()">Upload</button>
 </label>

@@ -21,10 +21,10 @@ public class ImageController {
         this.imageService = imageService;
     }
 
-    @PostMapping("create")
+    @PostMapping("create/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
-    public Image createImage(@RequestPart("image") @Valid @NotNull @NotBlank MultipartFile file) throws IOException {
-        return imageService.createImage(file);
+    public Image createImage(@RequestPart("image") @Valid @NotNull @NotBlank MultipartFile file, @PathVariable String id) throws IOException {
+        return imageService.createImage(file, id);
     }
 
     @GetMapping("get/{id}")

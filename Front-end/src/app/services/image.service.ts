@@ -7,12 +7,15 @@ import { Expense } from "../models/expense";
 export class ImageService {
   constructor(private http: HttpClient) {}
   
-  public uploadImage(image: File): Observable<any> {
-    const formData = new FormData();
+  public uploadImage(file: File, expense_id: string): Observable<any> {
+    
+    let url: string = 'http://localhost:9889/api/image/create/';
+    url = url.concat(expense_id);
 
-    formData.append('image', image);
+    const fd = new FormData();
+    fd.append('image', file, file.name);
 
-    return this.http.post('http://localhost:9889/api/image/create', formData);
+    return this.http.post(url, fd);
   }
 
   getImage(expense: Expense): Observable<{
@@ -21,12 +24,12 @@ export class ImageService {
     pic: string
   }>{
     const id: string = <string><unknown>expense.expense_id;
-    let link: string = 'http://localhost:9889/api/image/get/';
-    link = link.concat(id);
+    let url: string = 'http://localhost:9889/api/image/get/';
+    url = url.concat(id);
     return this.http.get<{
       expenseId: number,
       image_id: number,
       pic: string
-    }>(link);
+    }>(url);
   }
 }
