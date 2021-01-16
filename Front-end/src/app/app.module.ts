@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ImageUploadComponent } from './expense-list/image-upload/image-upload.component';
 import { ImageService } from './services/image.service';
+import { DownloadDataComponent } from './download-data/download-data.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ImageService } from './services/image.service';
     ExpenseListComponent,
     MainComponent,
     AddExpenseComponent,
-    ImageUploadComponent
+    ImageUploadComponent,
+    DownloadDataComponent
   ],
   imports: [
     BrowserModule,

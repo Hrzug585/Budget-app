@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddExpenseComponent } from './add-expense/add-expense.component';
+import { DownloadDataComponent } from './download-data/download-data.component';
 import { ExpenseListComponent } from './expense-list/expense-list.component';
 
 const routes: Routes = [
-  { path: 'expenses', component: ExpenseListComponent },
+  { path: 'download', component: DownloadDataComponent },
   { path: 'addexpense', component: AddExpenseComponent},
-  { path: 'addimage', component: ExpenseListComponent }
+  { path: 'expenses', component: ExpenseListComponent }
 ];
 
 @NgModule({

@@ -1,0 +1,14 @@
+<div class="container">
+   <h3>Export your expense data</h3>
+	<table class="sjs-table">
+		<tr *ngFor="let row of sheet">
+			<td *ngFor="let val of row">
+				{{val}} |
+			</td>
+		</tr>
+	</table>
+	<button (click)="exportExpensesXLSX()">Export XLSX!</button>
+	<hr/>
+	<button (click)="exportExpensesJSON()">Export JSON!</button>
+
+</div>
