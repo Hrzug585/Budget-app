@@ -39,4 +39,14 @@ public class ExpenseController {
     public Expense createExpense(@RequestBody final Expense expense) {
         return expenseService.createExpense(expense);
     }
+
+    @GetMapping("list/{id}/{year}/{month}")
+    public List<Expense> getExpenseById(@PathVariable Long id, @PathVariable int year, @PathVariable int month) {
+        return expenseService.getExpensesOfMonth(id, year, month);
+    }
+
+    @GetMapping("list_photos/{id}")
+    public List<Object> getAllExpensesWithPhoto(@PathVariable Long id) {
+        return expenseService.getAllExpensesWithPhoto(id);
+    }
 }

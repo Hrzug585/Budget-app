@@ -5,6 +5,7 @@ import com.project.budgetapp.domain.IExpenseService;
 import com.project.budgetapp.models.Expense;
 import com.project.budgetapp.repositories.IExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -57,7 +58,28 @@ public class ExpenseService implements IExpenseService {
     public List<Expense> getList(Long id) {
         List<Expense> list = accountService.getAccount(id).getExpenseList();
 //        return expenseRepository.findByAccount_id(id);
-            return list;
+
+//        List<Expense> expenses =  expenseRepository.findAllExpenses(Sort.by("timestamp"));
+        List<Expense> expenses =  expenseRepository.findAllExpenses(id);
+            return expenses;
     }
+
+    @Override
+    public List<Expense> getExpensesOfMonth(Long id, int year, int month) {
+        if(month > 12 || month < 1) {
+            throw new IllegalArgumentException("Choose month from 1-12 bracket");
+        }
+        String temp = Integer.toString(month);
+        temp = temp.length() == 1 ? "0" + temp : temp;
+        String timestamp = Integer.toString(year) + "-" + temp + "%";
+
+        return expenseRepository.findAllExpensesInMonth(id, timestamp);
+    }
+
+    @Override
+    public List<Object> getAllExpensesWithPhoto(Long id) {
+        return expenseRepository.findAllExpensesContainingPhoto(id);
+    }
+
 
 }

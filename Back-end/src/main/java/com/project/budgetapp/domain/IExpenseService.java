@@ -9,4 +9,6 @@ public interface IExpenseService {
     Expense createExpense(Expense expense);
     void deleteExpense(Long id);
     List<Expense> getList(Long id);
+    List<Expense> getExpensesOfMonth(Long id, int year, int month);
+    List<Object> getAllExpensesWithPhoto(Long id);
 }

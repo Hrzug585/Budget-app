@@ -35,7 +35,6 @@ table {
 
 #details {
     float: right; 
-    /* display:table-cell; */
     width:25%;
     height: 200px;
     border-radius: 25px;
