@@ -4,8 +4,8 @@
 -- DROP DATABASE IF EXISTS budget_app;
 --ALTER database budget_app is_template=false;
 
- DROP database budget_app;
- DROP user "dbUser";
+DROP database budget_app;
+DROP user "dbUser";
 
 CREATE user "dbUser" WITH ENCRYPTED PASSWORD 'dbPassword';
 
