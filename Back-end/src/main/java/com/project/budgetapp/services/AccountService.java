@@ -1,6 +1,7 @@
 package com.project.budgetapp.services;
 
 import com.project.budgetapp.domain.IAccountService;
+import com.project.budgetapp.errors.ResourceNotFoundException;
 import com.project.budgetapp.models.Account;
 import com.project.budgetapp.models.Category;
 import com.project.budgetapp.models.DefaultCategory;
@@ -30,7 +31,7 @@ public class AccountService implements IAccountService {
 
     @Override
     public Account getAccount(Long id) {
-        return accountRepository.getOne(id);
+        return accountRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Account with this id does not exist"));
     }
 
     @Override

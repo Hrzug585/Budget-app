@@ -22,7 +22,7 @@ public class ExpenseService implements IExpenseService {
     @Autowired
     public ExpenseService(IExpenseRepository expenseRepository, IAccountService accountService) {
         this.expenseRepository = expenseRepository;
-        this.accountService= accountService;
+        this.accountService = accountService;
     }
 
     @Override
@@ -56,12 +56,12 @@ public class ExpenseService implements IExpenseService {
 
     @Override
     public List<Expense> getList(Long id) {
-        List<Expense> list = accountService.getAccount(id).getExpenseList();
+//        List<Expense> list = accountService.getAccount(id).getExpenseList();
 //        return expenseRepository.findByAccount_id(id);
 
 //        List<Expense> expenses =  expenseRepository.findAllExpenses(Sort.by("timestamp"));
-        List<Expense> expenses =  expenseRepository.findAllExpenses(id);
-            return expenses;
+        List<Expense> expenses = expenseRepository.findAllExpenses(id);
+        return expenses;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.project.budgetapp.services;
 
+import com.project.budgetapp.errors.ResourceNotFoundException;
 import com.project.budgetapp.models.DefaultCategory;
 import com.project.budgetapp.repositories.IDefaultCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,6 @@ public class DefaultCategoryService {
     }
 
     protected DefaultCategory get(Long id) {
-        return defaultCategoryRepository.getOne(id);
+        return defaultCategoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Category with this id does not exist"));
     }
 }
