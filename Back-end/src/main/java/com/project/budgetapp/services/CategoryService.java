@@ -21,14 +21,16 @@ public class CategoryService implements ICategoryService {
 
     @Override
     public List<Category> list() {
-        return categoryRepository.findAll();
+        List<Category> categories = categoryRepository.findAll();
+        if (categories.isEmpty()) {
+            throw new ResourceNotFoundException("No categories found");
+        }
+        return categories;
     }
 
     @Override
     public Category getCategory(Long id) throws ResourceNotFoundException {
-        Category category = categoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Category not found"));
-
-        return category;
+        return categoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Category not found"));
     }
 
     @Override

@@ -23,6 +23,17 @@ public class ControllerExceptionHandler {
         return new ResponseEntity<ErrorMessage>(message, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(WrongInputException.class)
+    public ResponseEntity<ErrorMessage> wrongInputException(WrongInputException ex, WebRequest request) {
+        ErrorMessage message = new ErrorMessage(
+                HttpStatus.UNPROCESSABLE_ENTITY.value(),
+                new Date(),
+                ex.getMessage(),
+                request.getDescription(false));
+
+        return new ResponseEntity<ErrorMessage>(message, HttpStatus.UNPROCESSABLE_ENTITY);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorMessage> globalExceptionHandler(Exception ex, WebRequest request) {
         ErrorMessage message = new ErrorMessage(

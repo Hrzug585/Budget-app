@@ -4,13 +4,16 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 @Entity(name="categories")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long category_id;
+    @NotEmpty
     private String category_name;
+    @NotEmpty
     private Long account_id;
 
     public Category(String category_name, Long account_id) {

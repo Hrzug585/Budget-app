@@ -3,20 +3,19 @@ package com.project.budgetapp.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
-@Entity(name="accounts")
+@Entity(name = "accounts")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long account_id;
     private String account_created;
+    @NotEmpty
     private String account_name;
     private String account_deleted;
-
-    @OneToMany(mappedBy = "account_id", cascade = CascadeType.REMOVE)
-    private List<Expense> expenseList;
 
     @OneToMany(mappedBy = "account_id", cascade = CascadeType.REMOVE)
     private List<Category> categoryList;
@@ -29,14 +28,6 @@ public class Account {
 
     public void setCategoryList(List<Category> categoryList) {
         this.categoryList = categoryList;
-    }
-
-    public List<Expense> getExpenseList() {
-        return expenseList;
-    }
-
-    public void setExpenseList(List<Expense> expenseList) {
-        this.expenseList = expenseList;
     }
 
     public Long getAccount_id() {
