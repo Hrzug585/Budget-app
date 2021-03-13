@@ -26,6 +26,10 @@ public class AccountService implements IAccountService {
 
     @Override
     public List<Account> list() {
+        List<Account> accounts = accountRepository.findAll();
+        if(accounts.isEmpty()) {
+            throw new ResourceNotFoundException("No accounts found");
+        }
         return accountRepository.findAll();
     }
 
@@ -36,8 +40,8 @@ public class AccountService implements IAccountService {
 
     @Override
     public Account createAccount(Account account) {
-        List<DefaultCategory> defaultCategories = defaultCategoryService.list();
         Account newAccount =  accountRepository.saveAndFlush(account);
+        List<DefaultCategory> defaultCategories = defaultCategoryService.list();
 
         for (DefaultCategory c : defaultCategories) {
             Category category = new Category(c.getCategory_name(), newAccount.getAccount_id());
