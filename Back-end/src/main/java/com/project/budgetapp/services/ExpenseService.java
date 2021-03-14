@@ -2,6 +2,8 @@ package com.project.budgetapp.services;
 
 import com.project.budgetapp.domain.IAccountService;
 import com.project.budgetapp.domain.IExpenseService;
+import com.project.budgetapp.errors.ResourceNotFoundException;
+import com.project.budgetapp.errors.WrongInputException;
 import com.project.budgetapp.models.Expense;
 import com.project.budgetapp.repositories.IExpenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +17,12 @@ import java.util.List;
 @Service
 public class ExpenseService implements IExpenseService {
     private final IExpenseRepository expenseRepository;
-    private final IAccountService accountService;
     private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private static final String defaultName = "expense";
 
     @Autowired
-    public ExpenseService(IExpenseRepository expenseRepository, IAccountService accountService) {
+    public ExpenseService(IExpenseRepository expenseRepository) {
         this.expenseRepository = expenseRepository;
-        this.accountService= accountService;
     }
 
     @Override
@@ -56,18 +56,18 @@ public class ExpenseService implements IExpenseService {
 
     @Override
     public List<Expense> getList(Long id) {
-        List<Expense> list = accountService.getAccount(id).getExpenseList();
-//        return expenseRepository.findByAccount_id(id);
-
 //        List<Expense> expenses =  expenseRepository.findAllExpenses(Sort.by("timestamp"));
-        List<Expense> expenses =  expenseRepository.findAllExpenses(id);
-            return expenses;
+        List<Expense> expenses = expenseRepository.findAllExpenses(id);
+        if(expenses.isEmpty()) {
+            throw new ResourceNotFoundException("No expenses found");
+        }
+        return expenses;
     }
 
     @Override
     public List<Expense> getExpensesOfMonth(Long id, int year, int month) {
         if(month > 12 || month < 1) {
-            throw new IllegalArgumentException("Choose month from 1-12 bracket");
+            throw new WrongInputException("Choose month from 1-12 bracket");
         }
         String temp = Integer.toString(month);
         temp = temp.length() == 1 ? "0" + temp : temp;

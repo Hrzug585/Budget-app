@@ -1,6 +1,7 @@
 package com.project.budgetapp.services;
 
 import com.project.budgetapp.domain.IAccountService;
+import com.project.budgetapp.errors.ResourceNotFoundException;
 import com.project.budgetapp.models.Account;
 import com.project.budgetapp.models.Category;
 import com.project.budgetapp.models.DefaultCategory;
@@ -25,18 +26,22 @@ public class AccountService implements IAccountService {
 
     @Override
     public List<Account> list() {
+        List<Account> accounts = accountRepository.findAll();
+        if(accounts.isEmpty()) {
+            throw new ResourceNotFoundException("No accounts found");
+        }
         return accountRepository.findAll();
     }
 
     @Override
     public Account getAccount(Long id) {
-        return accountRepository.getOne(id);
+        return accountRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Account with this id does not exist"));
     }
 
     @Override
     public Account createAccount(Account account) {
-        List<DefaultCategory> defaultCategories = defaultCategoryService.list();
         Account newAccount =  accountRepository.saveAndFlush(account);
+        List<DefaultCategory> defaultCategories = defaultCategoryService.list();
 
         for (DefaultCategory c : defaultCategories) {
             Category category = new Category(c.getCategory_name(), newAccount.getAccount_id());

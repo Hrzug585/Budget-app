@@ -9,7 +9,6 @@ import java.util.List;
 
 public interface IExpenseRepository extends JpaRepository<Expense, Long> {
 //    List<Expense> findByAccount_id(Long Account_id);
-
     @Query("SELECT exp FROM expenses exp WHERE exp.account_id = ?1 order by exp.timestamp desc ")
     List<Expense> findAllExpenses(Long accountId);
 

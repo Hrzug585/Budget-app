@@ -1,11 +1,13 @@
 package com.project.budgetapp.services;
 
 import com.project.budgetapp.domain.ICategoryService;
+import com.project.budgetapp.errors.ResourceNotFoundException;
 import com.project.budgetapp.models.Category;
 import com.project.budgetapp.repositories.ICategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
@@ -19,12 +21,16 @@ public class CategoryService implements ICategoryService {
 
     @Override
     public List<Category> list() {
-        return categoryRepository.findAll();
+        List<Category> categories = categoryRepository.findAll();
+        if (categories.isEmpty()) {
+            throw new ResourceNotFoundException("No categories found");
+        }
+        return categories;
     }
 
     @Override
-    public Category getCategory(Long id) {
-        return categoryRepository.getOne(id);
+    public Category getCategory(Long id) throws ResourceNotFoundException {
+        return categoryRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Category not found"));
     }
 
     @Override

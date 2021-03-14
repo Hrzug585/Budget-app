@@ -4,8 +4,10 @@ import com.project.budgetapp.domain.IAccountService;
 import com.project.budgetapp.models.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,7 +27,8 @@ public class AccountController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Account create(@RequestBody final Account account) {
+    @Validated
+    public Account create(@Valid @RequestBody final Account account) {
         return accountService.createAccount(account);
     }
 
